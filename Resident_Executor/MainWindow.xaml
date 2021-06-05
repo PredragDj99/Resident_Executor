@@ -1,0 +1,53 @@
+﻿<Window x:Class="Resident_Executor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Resident_Executor"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="600" MouseLeftButtonDown="Window_MouseLeftButtonDown" WindowStyle="None" AllowsTransparency="True" Background="Transparent">
+    <Canvas>
+        <Canvas.RenderTransform>
+            <TransformGroup>
+                <ScaleTransform/>
+                <SkewTransform/>
+                <TranslateTransform/>
+            </TransformGroup>
+        </Canvas.RenderTransform>
+        <Path Stroke="Black" StrokeThickness="2" Name="UIPath" Stretch="Fill" Height="450" Width="600">
+            <Path.Fill>
+                <SolidColorBrush Color="Bisque" />
+            </Path.Fill>
+            <Path.Data>
+                <PathGeometry>
+                    <PathFigure StartPoint="0,25">
+
+                        <LineSegment Point="0,475"/>
+                        <BezierSegment Point1="0,475" Point2="0,500" Point3="25,500"></BezierSegment>
+                        <LineSegment Point="475,500" />
+                        <BezierSegment Point1="475,500" Point2="500,500" Point3="500,475"></BezierSegment>
+                        <LineSegment Point="500,25" />
+                        <BezierSegment Point1="500,25" Point2="500,0" Point3="475,0"></BezierSegment>
+                        <LineSegment Point="25,0"/>
+                        <BezierSegment Point1="25,0" Point2="0,0" Point3="0,25"></BezierSegment>
+                    </PathFigure>
+                </PathGeometry>
+            </Path.Data>
+        </Path>
+        <Label Content="Resident Executor" Canvas.Left="10" Canvas.Top="10" FontSize="27"/>
+        <Label Content="Potrošnja:" Canvas.Left="25" Canvas.Top="95" FontSize="22"/>
+        <TextBox Height="35" Canvas.Left="269" TextWrapping="Wrap" Text="" Canvas.Top="99" Width="88" FontSize="22" x:Name="potrosnja_tb"/>
+        <Label Content="mW/h" Canvas.Left="362" Canvas.Top="95" FontSize="22" RenderTransformOrigin="0.803,0.513"/>
+        <Label Content="Unesite ID područja:" Canvas.Left="25" Canvas.Top="169" FontSize="22"/>
+        <Button Content="Upisi" Canvas.Left="19" Canvas.Top="289" Width="212" Click="upisi_Click" FontSize="22"/>
+        <Button Content="Dodaj novo područje" Canvas.Left="19" Canvas.Top="366" Width="212" Click="dodajnp_Click" FontSize="22"/>
+        <Button Content="Prikaži" Canvas.Left="287" Canvas.Top="289" Width="212" Click="prikazi_Click" FontSize="22"/>
+        <Button Content="Izlaz" Canvas.Left="287" Canvas.Top="366" Width="212" Click="izlaz_Click" FontSize="22"/>
+        <ComboBox Canvas.Left="269" Canvas.Top="173" Width="113" Height="35" RenderTransformOrigin="0.469,1.543"  x:Name="combo_sifre" FontSize="22"/>
+        <Label Content="" Canvas.Left="269" Canvas.Top="134" Width="302" x:Name="greskaPotrosnja" Foreground="Red" FontSize="22"/>
+        <Label Content="" Canvas.Left="269" Canvas.Top="208" Width="302" x:Name="greskaId" Foreground="Red" FontSize="22"/>
+
+
+
+    </Canvas>
+</Window>

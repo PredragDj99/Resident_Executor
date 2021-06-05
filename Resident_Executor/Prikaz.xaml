@@ -1,0 +1,74 @@
+﻿<Window x:Class="Resident_Executor.Prikaz"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Resident_Executor"
+        mc:Ignorable="d"
+        Title="Prikaz" Height="450" Width="600" MouseLeftButtonDown="Window_MouseLeftButtonDown" WindowStyle="None" AllowsTransparency="True" Background="Transparent">
+    <Canvas>
+        <Canvas.RenderTransform>
+            <TransformGroup>
+                <ScaleTransform/>
+                <SkewTransform/>
+                <TranslateTransform/>
+            </TransformGroup>
+        </Canvas.RenderTransform>
+        <Path Stroke="Black" StrokeThickness="2" Name="UIPath" Stretch="Fill" Height="450" Width="600" >
+            <Path.Fill>
+                <SolidColorBrush Color="Bisque" />
+            </Path.Fill>
+            <Path.Data>
+                <PathGeometry>
+                    <PathFigure StartPoint="0,25">
+
+                        <LineSegment Point="0,475"/>
+                        <BezierSegment Point1="0,475" Point2="0,500" Point3="25,500"></BezierSegment>
+                        <LineSegment Point="475,500" />
+                        <BezierSegment Point1="475,500" Point2="500,500" Point3="500,475"></BezierSegment>
+                        <LineSegment Point="500,25" />
+                        <BezierSegment Point1="500,25" Point2="500,0" Point3="475,0"></BezierSegment>
+                        <LineSegment Point="25,0"/>
+                        <BezierSegment Point1="25,0" Point2="0,0" Point3="0,25"></BezierSegment>
+                    </PathFigure>
+                </PathGeometry>
+            </Path.Data>
+        </Path>
+
+        <Button Content="Izlaz" Canvas.Left="378" Canvas.Top="400" Width="212" Click="izlaz_Click" FontSize="22"/>
+        <Label Content="Izaberite funkciju:" Canvas.Left="30" Canvas.Top="10" FontSize="27" RenderTransformOrigin="1.426,0.662" Width="283"/>
+        <ComboBox Canvas.Left="269" Canvas.Top="18" Width="239" Height="36" RenderTransformOrigin="0.469,1.543"  x:Name="combo_funkc" FontSize="22" SelectionChanged="Combo_funkc_SelectionChanged"/>
+
+        <DataGrid x:Name="dataGridVar" ItemsSource="{Binding podaci}" AutoGenerateColumns="False" IsReadOnly="true"  Height="325" Canvas.Left="10" Canvas.Top="70" Width="580">
+            <DataGrid.Resources>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="Background" Value="Turquoise"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    <Setter Property="FontWeight" Value="SemiBold"/>
+                    <Setter Property="BorderThickness" Value="0,0,1,2"/>
+                    <Setter Property="BorderBrush" Value="Black"/>
+                    <Setter Property="FontSize" Value="12"/>
+                </Style>
+            </DataGrid.Resources>
+
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Šifra područja" Binding="{Binding sifrapd}" Width="100"/>
+                <DataGridTextColumn Header="Naziv područja" Binding="{Binding nazivpd}" Width="100"/>
+                <DataGridTextColumn Header="Vreme proračuna" Binding="{Binding vremeproracuna, StringFormat=\{0:HH:mm:ss\}}" Width="110"/>
+                <DataGridTextColumn Header="Poslednje vreme merenja" Binding="{Binding poslednjevreme, StringFormat=\{0:HH:mm:ss\}}" Width="150"/>
+                <DataGridTextColumn Header="Vrednost" Binding="{Binding vrednost}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="refresh_button" Canvas.Left="521" Canvas.Top="10" Width="50" Height="50" Click="refresh_Click">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="refresh.png" Stretch="Fill">
+                    
+                </Image>
+            </StackPanel>
+        </Button>
+
+
+
+    </Canvas>
+</Window>

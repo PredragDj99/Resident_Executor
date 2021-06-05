@@ -1,0 +1,4 @@
+SERVER=localhost;
+DATABASE=residentdb;
+UID=root;
+PASSWORD=ftn1;
